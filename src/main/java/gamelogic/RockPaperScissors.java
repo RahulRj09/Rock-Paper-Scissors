@@ -9,7 +9,7 @@ public class RockPaperScissors {
     static List<String> computerData = Arrays.asList("rock", "paper", "scissors");
     static Scanner input = new Scanner(System.in);
 
-    static String getGameResult(String userInput, String computerInput) {
+   public static String getGameResult(String userInput, String computerInput) {
         if (userInput.equals(computerInput)) {
             return "draw";
         } else if (userInput.equals("scissors") && computerInput.equals("paper")) {
