@@ -6,8 +6,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RockPaperScissors {
-    static List<String> computerData = Arrays.asList("rock", "paper", "scissors");
-    static Scanner input = new Scanner(System.in);
+    private static List<String> computerData = Arrays.asList("rock", "paper", "scissors");
+    private static Scanner input = new Scanner(System.in);
 
    public static String getGameResult(String userInput, String computerInput) {
         if (userInput.equals(computerInput)) {
@@ -43,8 +43,9 @@ public class RockPaperScissors {
                 System.out.println("invalid input");
             }
             System.out.println("you want to play again enter any key ? if you don't want to play again enter 'no' ");
-            String playAgain = input.nextLine().toLowerCase();
-            if (playAgain.equals("no")) {
+            String replay = input.nextLine().toLowerCase();
+            if (replay.equals("no")) {
+                System.out.println("Game Over");
                 break;
             }
         }
