@@ -7,31 +7,19 @@ import java.util.Scanner;
 
 public class RockPaperScissors {
     static List<String> computerData = Arrays.asList("rock", "paper", "scissors");
+    static Scanner input = new Scanner(System.in);
 
     static String getGameResult(String userInput, String computerInput) {
         if (userInput.equals(computerInput)) {
-            System.out.println("draw");
+            return "draw";
         } else if (userInput.equals("scissors") && computerInput.equals("paper")) {
-            System.out.println("you win");
+            return "you win";
         } else if (userInput.equals("paper") && computerInput.equals("rock")) {
-            System.out.println("you win");
+            return "you win";
         } else if (userInput.equals("rock") && computerInput.equals("scissors")) {
-            System.out.println("you win");
-        } else {
-            System.out.println("sorry you lost");
+            return "you win";
         }
-        Scanner input = new Scanner(System.in);
-        System.out.println("you want play again Enter yes");
-        String demo = input.nextLine().toLowerCase();
-        if (demo.equals("yes")) {
-            playAgain();
-        }
-        return "game over";
-    }
-
-    static void playAgain() {
-        String userInput = getUserInput();
-        getGameResult(userInput, getComputerInput(computerData));
+        return "sorry you lost";
 
     }
 
@@ -41,18 +29,24 @@ public class RockPaperScissors {
     }
 
     static String getUserInput() {
-        Scanner input = new Scanner(System.in);
         System.out.println("choose one from 'rock' , 'paper' , 'scissors' ");
         String userInput = input.nextLine().toLowerCase();
         return userInput;
     }
 
     public static void main(String[] args) {
-        String userInput = getUserInput();
-        if (computerData.contains(userInput)) {
-            System.out.println(getGameResult(userInput, getComputerInput(computerData)));
-        } else {
-            System.out.println("invalid input");
+        while (true) {
+            String userInput = getUserInput();
+            if (computerData.contains(userInput)) {
+                System.out.println(getGameResult(userInput, getComputerInput(computerData)));
+            } else {
+                System.out.println("invalid input");
+            }
+            System.out.println("you want to play again enter any key ? if you don't want to play again enter 'no' ");
+            String playAgain = input.nextLine().toLowerCase();
+            if (playAgain.equals("no")) {
+                break;
+            }
         }
     }
 }
